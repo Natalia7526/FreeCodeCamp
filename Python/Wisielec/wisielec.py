@@ -1,8 +1,8 @@
 import sys
 
 # liczba prób
-no_of_tries = 5
-word = "programowanie"
+no_of_tries = int(input("Podaj liczbę prób: "))
+word = "test"
 
 used_letters = []
 user_word = []
@@ -29,24 +29,34 @@ for _ in word:
 
 while True:
     letter = input("Podaj literę: ")
-    used_letters.append(letter)
+
 
     found_indexes = find_indexes(word, letter)
-    if len(found_indexes) == 0:
-        print("Nie ma takiej litery.")
-        no_of_tries -= 1
-
-        if no_of_tries == 0:
-            print("Koniec gry")
-            # kończenie programu bez występowania żadnego błędu
-            sys.exit(0)
+    if letter.isalpha() == False or len(letter) > 1:
+        print("Podano niedopuszczalny znak/znaki. Podaj literę!")
     else:
-        for index in found_indexes:
-            user_word[index] = letter
+        if letter in used_letters:
+            print("Już wykorzystano literę: ", letter)
+        elif len(found_indexes) == 0:
+            print("Nie ma takiej litery.")
+            no_of_tries -= 1
+            used_letters.append(letter)
 
-        # definiowanie pustego stringa "", a następnie konkatenacja liter w słowie
-        if "".join(user_word) == word:
-            print("Gratulacje, to jest to słowo!")
-            sys.exit(0)
+            if no_of_tries == 0:
+                print("Koniec gry")
+                # kończenie programu bez występowania żadnego błędu
+                sys.exit(0)
+
+
+        else:
+            for index in found_indexes:
+                user_word[index] = letter
+            used_letters.append(letter)
+
+            # definiowanie pustego stringa "", a następnie konkatenacja liter w słowie
+            if "".join(user_word) == word:
+                print("Gratulacje, to jest to słowo!")
+                sys.exit(0)
+
 
     show_state_of_game()
