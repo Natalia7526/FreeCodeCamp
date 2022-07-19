@@ -8,3 +8,4 @@ Here are stored tasks from the freecodecamp platform that I made.
 4) World Cup Database
 
 # Projects with python :fire:
+1) Simple Quiz
