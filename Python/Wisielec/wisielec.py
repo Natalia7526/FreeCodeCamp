@@ -2,7 +2,7 @@ import sys
 
 # liczba prób
 no_of_tries = int(input("Podaj liczbę prób: "))
-word = "test"
+word = "indyk"
 
 used_letters = []
 user_word = []
@@ -55,8 +55,10 @@ while True:
 
             # definiowanie pustego stringa "", a następnie konkatenacja liter w słowie
             if "".join(user_word) == word:
+                print(user_word)
                 print("Gratulacje, to jest to słowo!")
                 sys.exit(0)
 
 
     show_state_of_game()
+
